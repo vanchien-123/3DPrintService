@@ -1,0 +1,131 @@
+<!-- Spinner Start -->
+<div id="spinner"
+	class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+	<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+<!-- Spinner End -->
+
+<!-- Sidebar Start -->
+<div class="sidebar pe-4 pb-3">
+	<nav class="navbar bg-secondary navbar-dark">
+		<a th:href="@{/}" class="navbar-brand mx-4 mb-3">
+			<h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>G3Sem4</h3>
+		</a>
+		<div class="d-flex align-items-center ms-4 mb-4">
+			<div class="position-relative">
+				<img class="rounded-circle" src="https://icon-library.com/images/icon-admin/icon-admin-0.jpg" alt=""
+					style="width: 40px; height: 40px;" />
+				<!--	<div
+					class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+				</div>-->
+			</div>
+			<div class="ms-3">
+				<h6 class="mb-0"><a href="mailto:g3sem4@gmail.com">g3sem4@gmail.com</a></h6>
+				<span>Admin</span>
+			</div>
+		</div>
+
+		<div class="navbar-nav w-100">
+			<!--			<a th:href="@{/admin/products}" class="nav-item nav-link "><i
+					class="fa fa-tachometer-alt me-2"></i>Products</a>
+			<a th:href="@{/admin/inventory}" class="nav-item nav-link "><i
+					class="fa fa-tachometer-alt me-2"></i>Inventory</a>
+			<a th:href="@{/admin/inventory}" class="nav-item nav-link "><i
+					class="fa fa-tachometer-alt me-2"></i>Order</a-->
+			
+			<!--<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Reports</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/bireports}" class="dropdown-item ">Business Insights</a>
+					<a th:href="@{/admin/engagements}" class="dropdown-item">Engagements</a>
+					<a th:href="@{/admin/otherreports}" class="dropdown-item">Others</a>
+				</div>
+			</div>
+-->
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Accounts</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/user}" class="dropdown-item ">Users</a>
+					<a th:href="@{/admin/sessions}" class="dropdown-item">Sessions</a>
+					<a th:href="@{/admin/roles}" class="dropdown-item">Roles</a>
+				</div>
+			</div>
+
+			
+			
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Terms</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/payments}" class="dropdown-item ">Payments</a>
+					<a th:href="@{/admin/paysers}" class="dropdown-item">Payment Methods</a>
+					
+				</div>
+			</div>
+
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Categories</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/cats}" class="dropdown-item ">Cats</a>
+					<a th:href="@{/admin/subcats}" class="dropdown-item">SubCats</a>
+					<a th:href="@{/admin/prodgroups}" class="dropdown-item">Prodgroups</a>
+					<a th:href="@{/admin/products}" class="dropdown-item">Products</a>
+				</div>
+			</div>
+
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Business</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/orders}" class="dropdown-item ">Orders</a>
+					<a th:href="@{/admin/checkouts}" class="dropdown-item">Checkouts</a>
+					<a th:href="@{/admin/deliveries}" class="dropdown-item">Deliveries</a>
+					<a th:href="@{/admin/inventory}" class="dropdown-item">Inventory</a>
+					<a th:href="@{/admin/complaints}" class="dropdown-item">Complaints</a>
+				</div>
+			</div>
+
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Materials</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/materials}" class="dropdown-item">Materials</a>
+					<a th:href="@{/admin/colors}" class="dropdown-item ">Colors</a>
+					<a th:href="@{/admin/manufacturers}" class="dropdown-item">Manufacturers</a>
+				</div>
+			</div>
+
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Techno Data</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/technologies}" class="dropdown-item">Technologies</a>
+					<a th:href="@{/admin/printers}" class="dropdown-item">Printers</a>
+					<a th:href="@{/admin/pstrategies}" class="dropdown-item">Printing Strategies</a>
+				</div>
+			</div>
+
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="far fa-file-alt me-2"></i>Contents</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/news}" class="dropdown-item">News</a>
+					<a th:href="@{/admin/reviews}" class="dropdown-item">Reviews</a>
+					<a th:href="@{/admin/blogs}" class="dropdown-item">Blogs</a>
+					<a th:href="@{/admin/events}" class="dropdown-item">Events</a>
+					<a th:href="@{/admin/guides}" class="dropdown-item">Guides</a>
+					<a th:href="@{/admin/testimonials}" class="dropdown-item">Testimonials</a>
+				</div>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/news}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>News</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>
+<!-- Sidebar End -->

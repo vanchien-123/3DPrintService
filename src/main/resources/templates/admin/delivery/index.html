@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>G3Sem4 Dashboard Admin| Deliveries</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicon -->
+	<!--<link rel="icon" th:href="@{${'/assets/img/icon_app.png'}}">-->
+	<link rel="icon"
+		href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmKaidj8sM29pR3V21LdGao-FuG5nnQBZYovHlyNj6jmh1JWgw49C5MkJYbaWpRkbBnxI&usqp=CAU">
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Icon Font Stylesheet -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link th:href="@{/css/dashboard/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Template Stylesheet -->
+	<link th:href="@{/css/dashboard/style.css}" rel="stylesheet">
+
+	<link th:href="@{/css/dashboard/dataTable.css}" rel="stylesheet">
+	<link th:href="@{/css/dashboard/buttonDataTable.css}" rel="stylesheet">
+
+	<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+	<div class="container-fluid position-relative d-flex p-0">
+
+
+
+		<th:block th:include="/partials/dashboard/_sidebar"></th:block>
+
+		<!-- Content Start -->
+		<div class="content">
+
+			<th:block th:include="/partials/dashboard/_navbar"></th:block>
+
+
+			<!-- Recent Sales Start -->
+			<div class="container-fluid pt-4 px-4">
+				<div class="bg-secondary text-center rounded p-4">
+					<div class="d-flex align-items-center justify-content-between mb-4">
+						<h6 class="mb-0">List of Deliveries</h6>
+
+						<!--<a class="" th:href="@{/admin/products/insert}">Add New</a>-->
+					</div>
+					<div class="table-responsive">
+						<table id="myTable" class="table text-start align-middle table-bordered table-hover mb-0">
+							<thead>
+								<tr class="text-white">
+									<th scope="col">No.</th>
+									<th scope="col">Delivery No.</th>
+									<th scope="col">Order ID</th>
+									<!--<th scope="col">Buyer ID</th>-->
+									<!--									<th scope="col">Buyer Name</th>
+									<th scope="col">Email</th>
+									<th scope="col">Tel</th>-->
+									<th scope="col">Created</th>
+									<th scope="col">Delivery address</th>
+									<th scope="col">Notes</th>
+									<th scope="col">Status</th>
+									<!--<th scope="col">Actions</th>-->
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each=" d, iStat : ${listDeliveries}">
+									<td th:text="${iStat.count}">
+									</td>
+									<td th:text="${d.delivery_id}"></td>
+									<td th:text="${d.orderid}"></td>
+
+									<!--<div th:each="o : ${listOrders}">
+										<div th:if="${o.order_id == d.orderid}">
+											<td th:text="${o.buyerid}"></td>
+										</div>
+									</div>-->
+
+
+
+									<!--<div th:each="u : ${listUsers}">
+											<div th:if="${u.user_id == o.buyerid}">
+												<td th:text="${u.email}"></td>
+											</div>
+										</div>
+										<div th:each="u : ${listUsers}">
+											<div th:if="${u.user_id == o.buyerid}">
+												<td th:text="${u.tel}"></td>
+											</div>
+										</div>-->
+
+
+
+									<td th:text="${d.delivery_createdat}"></td>
+
+									<td th:text="${d.delivery_address}"></td>
+									<td th:text="${d.delivery_notes}"></td>
+									<td th:text="${d.delivery_status}"></td>
+									<!--<td class="text-center">
+										<form action="/admin/deliveries/viewdetail" method="get">
+											<input type="hidden" name="id" id="id" th:value="${d.delivery_id}" />
+											<button type="submit" class="btn"><i
+													class="fa-solid fa-pen-to-square"></i>Details</button>
+										</form>
+										<form action="/admin/deliveries/edit" method="post">
+											<input type="hidden" name="id" id="id" th:value="${d.delivery_id}" />
+											<button type="submit" class="btn"> <i
+													class="fa-solid fa-trash"></i>Update</button>
+										</form>
+									</td>-->
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- Recent Sales End -->
+
+
+
+			<th:block th:include="/partials/dashboard/_footer"></th:block>
+
+
+		</div>
+		<!-- Content End -->
+
+
+		<!-- Back to Top -->
+		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+	</div>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+	<!-- Template Javascript -->
+	<script th:src="@{/js/main.js}"></script>
+	<script type="text/javascript">
+
+
+		$(document).ready(function () {
+			$('#myTable').DataTable({
+				dom: 'Bfrtip',
+				renderer: {
+					"header": "jqueryui",
+					"pageButton": "bootstrap"
+				},
+				buttons: [
+					'copy', 'csv', 'excel', 'pdf', 'print'
+				]
+			});
+		});
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>G3Sem4 Dashboard Admin</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Icon Font Stylesheet -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link th:href="@{/css/dashboard/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Template Stylesheet -->
+	<link th:href="@{/css/dashboard/style.css}" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/richtext/site.css}">
+	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}">
+	<script type="text/javascript" th:src="@{/richtext/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/richtext/jquery.richtext.min.js}"></script>
+	<script type="text/javascript" th:src="@{/richtext/jquery.richtext.js}"></script>
+</head>
+
+<body>
+	<div class="container-fluid position-relative d-flex p-0">
+
+
+
+		<th:block th:include="/partials/dashboard/_sidebar"></th:block>
+
+		<!-- Content Start -->
+		<div class="content">
+
+			<th:block th:include="/partials/dashboard/_navbar"></th:block>
+
+
+			<!-- Recent Sales Start -->
+			<div class="container-fluid pt-4 px-4">
+				<div class="bg-secondary text-center rounded p-4">
+					<div class="d-flex align-items-center justify-content-between mb-4">
+						<h6 class="mb-0">Edit Product</h6>
+
+						<a class="" th:href="@{/admin/products}">Back to list</a>
+					</div>
+
+					<form action="/admin/products/edited" enctype="multipart/form-data" method="post">
+						<div class="col-sm-12 col-xl-6">
+							<div class="bg-secondary rounded h-100 p-4">
+								<h6 class="mb-4">Edit Form</h6>
+								<div class="form-floating mb-3">
+									<input type="text" th:value="${product_id}" name="product_id" class="form-control"
+										id="floatingInput">
+									<label for="floatingInput">Id</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="text" th:value="${product_name}" name="product_name"
+										class="form-control" id="floatingPassword" placeholder="Name">
+									<label for="floatingPassword">Name</label>
+								</div>
+
+								<div class="form-floating mb-3">
+									<select name="prodgroupid" class="form-select" id="floatingSelect"
+										aria-label="Floating label select example">
+										<div th:each=" pg : ${listProdgroups}">
+											<option th:value="${pg.prodgroup_id}" th:text="${pg.prodgroup_name}">
+											</option>
+										</div>
+									</select>
+									<label for="floatingSelect">Prodgroups </label>
+								</div>
+								<div class="form-floating mb-3">
+									<select name="subcatid" class="form-select" id="floatingSelect"
+										aria-label="Floating label select example">
+										<div th:each=" sc : ${listScats}">
+											<option th:value="${sc.subcat_id}" th:text="${sc.subcat_name} "> </option>
+										</div>
+									</select>
+									<label for="floatingSelect">Subcats </label>
+								</div>
+								<div class="form-floating mb-3">
+									<select name="mfgerid" class="form-select" id="floatingSelect"
+										aria-label="Floating label select example">
+										<div th:each=" mf : ${listMfgers}">
+											<option th:value="${mf.mfger_id}" th:text="${mf.mfger_name} "> </option>
+										</div>
+									</select>
+									<label for="floatingSelect">Manufacturers </label>
+								</div>
+
+								<div class="mb-3">
+									<input class="form-control form-control-sm bg-dark" th:value="${img1}" name="img1"
+										type="file">
+									<a th:href="@{${'/upload/' + img1}}" title="Click to see full image"
+										target="_blank">
+										<img th:src="@{${'/upload/' + img1}}" width="120"
+											style="border-radius: 0.8rem;" />
+									</a>
+									<input type="text" readonly="readonly" th:value="${img1}" />
+								</div>
+
+								<div class="mb-3">
+									<input class="form-control form-control-sm bg-dark" th:value="${img2}" name="img2"
+										type="file">
+									<a th:href="@{${'/upload/' + img2}}" title="Click to see full image"
+										target="_blank">
+										<img th:src="@{${'/upload/' + img2}}" width="120"
+											style="border-radius: 0.8rem;" />
+									</a>
+									<input type="text" readonly="readonly" th:value="${img2}" />
+								</div>
+								<div class="mb-3">
+									<input class="form-control form-control-sm bg-dark" th:value="${img3}" name="img3"
+										type="file">
+									<a th:href="@{${'/upload/' + img3}}" title="Click to see full image"
+										target="_blank">
+										<img th:src="@{${'/upload/' + img3}}" width="120"
+											style="border-radius: 0.8rem;" />
+									</a>
+									<input type="text" readonly="readonly" th:value="${img3}" />
+								</div>
+								<div class="form-floating mb-3">
+									<input type="text" name="stl" th:value="${stl}" class="form-control"
+										id="floatingPassword" placeholder="Stl">
+									<label for="floatingPassword">Stl</label>
+								</div>
+								<div class="form-floating mb-3">
+									<textarea type="text" rows="4" id="floatingTextarea" name="product_desc"
+										class="content" autocomplete="off">[[${product_desc}]]</textarea>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="number" name="sizeX" th:value="${sizeX}" class="form-control"
+										id="floatingPassword" placeholder="sizeX">
+									<label for="floatingPassword">Size X</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="number" name="sizeY" th:value="${sizeY}" class="form-control"
+										id="floatingPassword" placeholder="sizeY">
+									<label for="floatingPassword">Size Y</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="number" name="sizeZ" th:value="${sizeZ}" class="form-control"
+										id="floatingPassword" placeholder="sizeZ">
+									<label for="floatingPassword">Size Z</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="number" name="vol" th:value="${vol}" class="form-control"
+										id="floatingPassword" placeholder="vol">
+									<label for="floatingPassword">Vol</label>
+								</div>
+
+								<div class="form-floating mb-3">
+									<input type="number" name="weight" th:value="${weight}" class="form-control"
+										id="floatingPassword" placeholder="weight">
+									<label for="floatingPassword">Weight</label>
+								</div>
+
+								<input type="submit" class="btn btn-light" value="Update">
+
+
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<!-- Recent Sales End -->
+
+
+
+			<th:block th:include="/partials/dashboard/_footer"></th:block>
+
+
+		</div>
+		<!-- Content End -->
+
+
+		<!-- Back to Top -->
+		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+	</div>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+	<!-- Template Javascript -->
+	<script th:src="@{/js/main.js}"></script>
+	<script type="text/javascript">
+
+
+		$(document).ready(function () {
+			$('#myTable').DataTable({
+				dom: 'Bfrtip',
+				renderer: {
+					"header": "jqueryui",
+					"pageButton": "bootstrap"
+				},
+				buttons: [
+					'copy', 'csv', 'excel', 'pdf', 'print'
+				]
+			});
+		});
+
+
+	</script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/super-build/ckeditor.js"></script>
+	<script>
+		// This sample still does not showcase all CKEditor&nbsp;5 features (!)
+		// Visit https://ckeditor.com/docs/ckeditor5/latest/features/index.html to browse all the features.
+		CKEDITOR.ClassicEditor.create(document.getElementById("floatingTextarea"), {
+			// https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
+			toolbar: {
+				items: ['exportPDF', 'exportWord', '|',
+					'findAndReplace', 'selectAll', '|',
+					'bold', 'italic', 'strikethrough', 'underline',
+					'undo', 'redo',
+					'alignment', '|',
+					'link', 'insertImage', 'mediaEmbed', 'sourceEditing'
+				],
+				shouldNotGroupWhenFull: true
+			},
+			// Changing the language of the interface requires loading the language file using the <script> tag.
+			// language: 'es',
+			list: {
+				properties: {
+					styles: true,
+					startIndex: true,
+					reversed: true
+				}
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
+			heading: {
+				options: [
+					{model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph'},
+					{model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1'},
+					{model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2'},
+					{model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3'},
+					{model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4'},
+					{model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5'},
+					{model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6'}
+				]
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
+			placeholder: 'New Content',
+			// https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
+			fontFamily: {
+				options: [
+					'default',
+					'Arial, Helvetica, sans-serif',
+					'Courier New, Courier, monospace',
+					'Georgia, serif',
+					'Lucida Sans Unicode, Lucida Grande, sans-serif',
+					'Tahoma, Geneva, sans-serif',
+					'Times New Roman, Times, serif',
+					'Trebuchet MS, Helvetica, sans-serif',
+					'Verdana, Geneva, sans-serif'
+				],
+				supportAllValues: true
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
+			fontSize: {
+				options: [10, 12, 14, 'default', 18, 20, 22],
+				supportAllValues: true
+			},
+			// Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
+			// https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
+			htmlSupport: {
+				allow: [
+					{
+						name: /.*/,
+						attributes: true,
+						classes: true,
+						styles: true
+					}
+				]
+			},
+			// Be careful with enabling previews
+			// https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
+			htmlEmbed: {
+				showPreviews: true
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
+			link: {
+				decorators: {
+					addTargetToExternalLinks: true,
+					defaultProtocol: 'https://',
+					toggleDownloadable: {
+						mode: 'manual',
+						label: 'Downloadable',
+						attributes: {
+							download: 'file'
+						}
+					}
+				}
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
+			mention: {
+				feeds: [
+					{
+						marker: '@',
+						feed: [
+							'@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
+							'@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
+							'@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
+							'@sugar', '@sweet', '@topping', '@wafer'
+						],
+						minimumCharacters: 1
+					}
+				]
+			},
+			// The "super-build" contains more premium features that require additional configuration, disable them below.
+			// Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
+			removePlugins: [
+				// These two are commercial, but you can try them out without registering to a trial.
+				// 'ExportPdf',
+				// 'ExportWord',
+				'CKBox',
+				'CKFinder',
+				'EasyImage',
+				// This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
+				// https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
+				// Storing images as Base64 is usually a very bad idea.
+				// Replace it on production website with other solutions:
+				// https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
+				// 'Base64UploadAdapter',
+				'RealTimeCollaborativeComments',
+				'RealTimeCollaborativeTrackChanges',
+				'RealTimeCollaborativeRevisionHistory',
+				'PresenceList',
+				'Comments',
+				'TrackChanges',
+				'TrackChangesData',
+				'RevisionHistory',
+				'Pagination',
+				'WProofreader',
+				// Careful, with the Mathtype plugin CKEditor will not load when loading this sample
+				// from a local file system (file://) - load this site via HTTP server if you enable MathType.
+				'MathType',
+				// The following features are part of the Productivity Pack and require additional license.
+				'SlashCommand',
+				'Template',
+				'DocumentOutline',
+				'FormatPainter',
+				'TableOfContents',
+				'PasteFromOfficeEnhanced'
+			]
+		});
+	</script>
+</body>
+
+</html>

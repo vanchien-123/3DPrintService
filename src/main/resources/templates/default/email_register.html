@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Email Template</title>
+	<style>
+		/* Thêm CSS tại đây để tạo giao diện email đẹp hơn */
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: #e8e8e8;
+			font-family: 'Roboto', sans-serif;
+			color: #222;
+		}
+
+		p {
+			line-height: 28px;
+		}
+
+		.container {
+			width: 600px;
+			margin: 20px auto auto;
+			background-color: #fff;
+			padding: 20px;
+		}
+
+		header h1 {
+			text-align: center;
+			margin-bottom: 16px;
+		}
+
+		section span {
+			font-weight: bold;
+		}
+
+		footer {
+			margin-top: 20px;
+		}
+
+		.text-primary {
+			color: #EB1616 !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h2 class="text-primary"><i class="fa fa-user-edit me-2"></i>G3Sem4</h2>
+			<h1>Registeration Announcement</h1>
+		</header>
+		<section>
+			<p th:text="#{greetings to Mr./Ms. (${toEmail})}"></p>
+			<p th:text="#Subject: {${subject}}"></p>
+			<p>Thank you! You registered successfully!</p>
+			<b>___________________________________________</b>
+			<p th:text="${content}"></p>
+			<p>Best regards,</p>
+			<br>
+			<b>___________________________________________</b>
+			<p>
+				<em th:text="#{signature(${senderName})}"></em> <br />
+				<em><i>Admin Board of G3Sem4 Customer Care Service</i></em>
+				<em>Email: </em><a href="mailto:g3sem4.admin@gmail.com">g3sem4.admin@gmail.com</a>
+				<em>Hotline: </em><a href="tel:0911111111">Call me now!</a>
+				<em>Website: </em><a href="http://www.g3sem4.com">Call me now!</a>
+			</p>
+		</section>
+		<footer>
+			<p>
+				For more information, please <a th:href="tel:0911111111">contact us!</a> Back to <a th:href=""> Home
+					Page</a>.
+			</p>		
+		</footer>
+	</div>
+</body>
+
+</html>

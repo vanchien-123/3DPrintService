@@ -1,0 +1,528 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<nav class="
+  sw--nav-hide-mobile-tablet
+  sw-grid-flex
+  sw--position-absolute
+  sw-dms-nav__desktop
+  sw-dms-nav__desktop--v2
+  sw-dms-nav__desktop--overlap
+  " data-sw-dms-nav-desktop-v2>
+		<ul class="
+    sw-dms-nav__inner-wrapper
+    sw-grid-flex
+    sw-grid-flex__cell-1-1
+    sw-grid-flex--align-center
+    sw--list-style-none
+    sw--margin-0
+    sw--height-full
+    sw--padding-left-6
+    sw--padding-right-6">
+
+			<li
+				class="sw--height-full sw-dms-nav__logo-container sw-grid-flex sw--position-relative sw-grid-flex--align-center">
+				<a class="sw-grid-flex sw-grid-flex--align-center sw-dms-nav--top-nav-middle-section-content"
+					id="logo-link" href="#">
+					G3Sem4
+				</a>
+			</li>
+
+
+
+
+			<li data-sw-dms-nav-right-side-links class="sw--height-full sw-grid-flex sw-grid-flex__cell"
+				data-coyote-locator="nav-right-links">
+				<ul
+					class="sw-grid-flex sw-grid-flex--align-center sw--list-style-none sw--margin-0 sw--height-full sw-grid-flex__cell-1-1 sw-grid-flex--justify-flex-end">
+					
+					<li
+						class="sw--height-full sw-dms-nav__manufacturing-menu-toggle sw-grid-flex sw-grid-flex--align-center sw--position-relative sw--margin-right-6">
+						<span style="color: white;"
+							class="sw-dms-nav__link  sw-dms-nav__link--light  sw--uppercase sw-dms-nav__manufacturing-link sw--font-size-15">Manufacturing</span>
+						<div
+							class="sw-dms-nav__manufacturing-menu sw-dms-nav__start-making--v2 sw--font-size-14 sw-dms--box-shadow--big sw--border-radius-5 sw-grid-flex">
+							<div class="sw-dms-nav__column">
+								<div class="sw--padding-top-4 sw--padding-bottom-1 sw--padding-hor-5">
+									<h6><a href="/business/additive-manufacturing"
+											class="sw-dms--color-black sw-dms-nav-dropdown-link">Additive
+											Manufacturing</a></h6>
+									<ul class="sw--list-style-none sw--margin-0 sw--padding-top-4">
+										<li class="sw--margin-bottom-4">
+											<a href="/upload-3d-print-files-models" event-category="Navigation"
+												event-action="Solutions - 3d printing"
+												event-label="/upload-3d-print-files-models"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">3D
+												Printing
+											</a>
+										</li>
+										<li class="sw--margin-bottom-4">
+											<a href="/business/rapid-prototyping-services" event-category="Navigation"
+												event-action="Solutions - Rapid Prototyping"
+												event-label="/business/rapid-prototyping-services"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Rapid
+												Prototyping
+											</a>
+										</li>
+										<li class="sw--margin-bottom-4">
+											<a href="/design" event-category="Navigation"
+												event-action="solutions - design services" event-label="/design/"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Design
+												Services
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="sw--height-full sw-dms-nav__desktop-menu-toggle sw-grid-flex sw-grid-flex--align-center sw--position-relative sw--margin-right-6">
+						<span style="color: white;"
+							class="sw-dms-nav__link  sw-dms-nav__link--light  sw--uppercase sw-dms-nav__business-solutions-link sw--font-size-15">Industries</span>
+						<div
+							class="sw-dms-nav__desktop-menu sw-dms-nav__start-making--v2 sw--font-size-14 sw-dms--box-shadow--big sw--border-radius-5">
+							<div class="sw--padding-top-4 sw--padding-bottom-1 sw--padding-hor-5">
+								<ul class="sw--list-style-none sw--margin-0" th:each=" progr : ${listProdgroups}">
+									<li class="sw--margin-bottom-4">
+												<a th:href="@{'productgroup-viewdetail?id=' + ${progr.prodgroup_id}}"
+													class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center" th:text="${progr.prodgroup_name}">
+												</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li
+						class="sw--height-full sw-dms-nav__materials-menu-toggle sw-grid-flex sw-grid-flex--align-center sw--position-relative sw--margin-right-6">
+						<a href="" event-category="Navigation" event-action="materials"
+							event-label="/materials" style="color: white;"
+							class="sw-dms-nav-dropdown-link sw-dms-nav__link  sw-dms-nav__link--light  sw--uppercase sw-dms-nav__business-solutions-link sw--font-size-15">Materials</a>
+						<div class="sw-dms-nav__materials-menu sw-dms--box-shadow--small">
+							<div class="sw--font-size-14 sw--border-radius-5 sw-grid-flex">
+								<div class="sw-dms-nav__column">
+									<div class="sw--padding-top-4 sw--padding-bottom-1 sw--padding-hor-5">
+
+										<ul class="sw--list-style-none sw--margin-0 sw--padding-top-4" th:each=" mate : ${listMate}">
+											<li class="sw--margin-bottom-4">
+												<a th:href="@{'material-viewdetail?id=' + ${mate.material_id}}"
+													class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center" th:text="${mate.material_name}">
+												</a>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</li>
+					<li
+						class="sw--height-full sw-dms-nav__desktop-menu-toggle sw-grid-flex sw-grid-flex--align-center sw--position-relative sw--margin-right-6">
+						<span style="color: white;"
+							class="sw-dms-nav__link  sw-dms-nav__link--light  sw--uppercase sw-dms-nav__business-solutions-link sw--font-size-15">ABOUT</span>
+						<div
+							class="sw-dms-nav__desktop-menu sw-dms-nav__start-making--v2 sw--font-size-14 sw-dms--box-shadow--big sw--border-radius-5 sw-grid-flex">
+							<div class="sw-dms-nav__column">
+								<div class="sw--padding-top-4 sw--padding-bottom-1 sw--padding-hor-5">
+									<h6 class="sw-dms--color-black">About</h6>
+									<ul class="sw--list-style-none sw--margin-0 sw--padding-top-4">
+										<li class="sw--margin-bottom-4">
+											<a href="/news" event-category="Navigation"
+												event-action="about us - careers" event-label="/jobs"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">News
+											</a>
+										</li>
+										<li class="sw--margin-bottom-4">
+											<a href="/reviews" event-category="Navigation"
+												event-action="about us - careers" event-label="/jobs"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Reivew
+											</a>
+										</li>
+										<li class="sw--margin-bottom-4">
+											<a href="/blogs" event-category="Navigation"
+												event-action="about us - careers" event-label="/jobs"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Blogs
+											</a>
+										</li>
+										<li class="sw--margin-bottom-4">
+											<a href="/events" event-category="Navigation"
+												event-action="about us - careers" event-label="/jobs"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Events
+											</a>
+										</li>
+										<li class="sw--margin-bottom-4">
+											<a href="/testimonials" event-category="Navigation"
+												event-action="about us - careers" event-label="/jobs"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Testimonials
+											</a>
+										</li>
+
+										<li class="sw--margin-bottom-4">
+											<a href="/guides" event-category="Navigation"
+												event-action="about us - careers" event-label="/jobs"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Guides
+											</a>
+										</li>
+										<li class="sw--margin-bottom-4">
+											<a href="/contact" event-category="Navigation"
+												event-action="about us - contact us" event-label="/contact"
+												class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Contact
+												Us
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!--<div class="sw-dms-nav__column">
+							<div class="sw--padding-top-4 sw--padding-bottom-1 sw--padding-hor-5">
+								<h6 class="sw-dms--color-black">Resources</h6>
+								<ul class="sw--list-style-none sw--margin-0 sw--padding-top-4">
+									<li class="sw--margin-bottom-4">
+										<a href="/blog/" event-category="Navigation" event-action="resources - blog"
+											event-label="/blog"
+											class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Blog
+										</a>
+									</li>
+									<li class="sw--margin-bottom-4">
+										<a href="/resources/events" event-category="Navigation"
+											event-action="resources - events & webinar" event-label="/resources/events"
+											class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Events
+											& Webinars
+										</a>
+									</li>
+									<li class="sw--margin-bottom-4">
+										<a href="/resources/case-studies" event-category="Navigation"
+											event-action="resources - case studies"
+											event-label="/resources/case-studies"
+											class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Case
+											Studies
+										</a>
+									</li>
+									<li class="sw--margin-bottom-4">
+										<a href="/resources/testimonials" event-category="Navigation"
+											event-action="resources - testimonials"
+											event-label="/resources/testimonials"
+											class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Testimonials
+										</a>
+									</li>
+									<li class="sw--margin-bottom-4">
+										<a href="https://developers.shapeways.com/" event-category="Navigation"
+											event-action="resources - API" event-label="developers.shapeways.com"
+											class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">API
+										</a>
+									</li>
+									<li class="sw--margin-bottom-4">
+										<a href="/business/e-commerce-integrations" event-category="Navigation"
+											event-action="resources - e-commerce integrations"
+											event-label="/business/e-commerce-integrations"
+											class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">e-Commerce
+											Integrations
+										</a>
+									</li>
+									<li class="sw--margin-bottom-4">
+										<a href="https://info.shapeways.com/subscribe-3d-print-newsletter"
+											event-category="Navigation" event-action="resources - newsletter signup"
+											event-label="https://mailchi.mp/shapeways.com/newsletter"
+											class="sw-dms-nav-dropdown-link sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Newsletter
+											Signup
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>-->
+						</div>
+					</li>
+					<li
+						class="sw--height-full sw-grid-flex sw-grid-flex--align-center sw--position-relative sw--margin-right-6">
+						<a href="https://investors.shapeways.com " event-category="Navigation"
+							event-action="about us - investors" event-label="/about/investor-relations"
+							style="color: white;"
+							class="sw-dms-nav__link sw-dms-nav-software-link  sw-dms-nav__link--light  sw--uppercase sw-dms-nav__business-solutions-link sw--font-size-15">Investors
+						</a>
+					</li>
+					
+					
+					
+					<!--<a th:href="@{/admin/products}"  class="sw-dms-nav__link sw-dms-nav-software-link  sw-dms-nav__link--light  sw--uppercase sw-dms-nav__business-solutions-link sw--font-size-15">Dashboard(Admin)</a>-->
+					<li class="sw--height-full sw-grid-flex sw-grid-flex--align-center sw--padding-left-6" th:if="${session.object != null}">
+						<a href="#"
+							class="sw-dms-button sw-dms-button--red sw-dms-button--small sw-dms-button--rectangle sw--text-transform-inherit"
+							data-sw-login-link="login"
+							data-sw-login-link-target-url="/model/material-configurator/upload"
+							event-category="Navigation" event-label="/model/material-configurator/upload"
+							event-action="get a quote"  th:text="'Hello '+ ${session.object.name}">
+						</a>
+					</li>
+
+					<li
+						class="sw--height-full sw-dms-nav__user-menu-toggle sw-grid-flex sw-grid-flex--align-center sw--padding-left-6">
+						<div class="user-menu__logged-in sw--is-hidden ">
+							<div class="sw--position-relative">
+								<a href="/mymodels"
+									class="sw-dms-nav--avatar sw-dms-nav--avatar-v2 sw-dms-nav__user-menu-anchor">
+									<div class="sw-avatar sw-avatar--dms sw--circle sw--display-inline-block">
+										<img class="sw--user-avatar"
+											src="https://images1.sw-cdn.net/cdn-cgi/image/quality=85,gravity=auto,format=auto,fit=scale-down,width=1920/img/avatar/nopicture-2013031201.png"
+											alt lazyload="1" loading="lazy">
+									</div>
+								</a>
+								<div id="messagecount"
+									class="sw--position-absolute sw-notification-counter sw-notification-counter--nav-v2 sw-notification-counter--red sw-notification-counter--white-text--important sw-notification-counter--cart sw--is-hidden">
+									0
+								</div>
+							</div>
+							<div class="sw-dms-nav__user-menu sw-dms-nav__user-menu--v2 sw--font-size-14 sw-dms--box-shadow--big sw--border-radius-5 sw-grid-flex"
+								data-coyote-locator="user-menu">
+								<div
+									class="sw-dms-nav__user-menu-my-shapeways sw-dms--bg-white sw--font-size-14 sw--border-radius-5 sw-grid-flex__cell-4-7 sw--border-radius-right-0">
+									<div
+										class="sw--border-bottom-grey-1 sw--padding-left-4 sw--padding-top-4 sw--padding-bottom-4">
+										<h6 class="sw--padding-left-2 sw--margin-bottom-2">My Shapeways</h6>
+										<ul class="
+                     sw-grid-flex--align-center
+                     sw--list-style-none
+                     sw--margin-0
+                     sw--padding-hor-2
+                     sw--padding-top-2">
+											<li class="sw--margin-bottom-4 sw-grid-flex">
+												<a href="/mymodels" event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - My 3D Models"
+													class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">
+													<span
+														class="sw--font-size-22 sw-dms--color-grey-46 icon-models sw--margin-right-2"></span>My
+													3D Models
+												</a>
+												<a event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - Upload Now"
+													href="/model/material-configurator/upload"
+													class="sw-dms-button sw-dms-button--white sw-dms-button--small sw--uppercase sw--text-center sw--vertical-align sw--margin-left-5">
+													Upload
+												</a>
+											</li>
+											<li class>
+												<a href="/creator" event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - 3D Design Apps"
+													class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">
+													<span
+														class="sw--font-size-22 sw-dms--color-grey-46 icon-creator sw--margin-right-2"></span>3D
+													Design Apps
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div
+										class="sw--padding-left-4 sw--padding-bottom-5 sw--padding-top-3 sw--position-relative">
+										<ul class="
+                     sw-grid-flex--align-center
+                     sw--list-style-none
+                     sw--margin-0
+                     sw--padding-hor-2
+                     sw--padding-top-2">
+											<li class="sw--margin-bottom-4 sw-grid-flex sw--shop-owner sw--is-hidden">
+												<a href="/shop/inventory" event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - My Products"
+													class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">
+													<span
+														class="sw--font-size-22 sw-dms--color-grey-46 icon-products sw--margin-right-2"></span>My
+													Products
+												</a>
+												<a href="/myshop" event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - View Shop"
+													class="sw-dms__link--underlined sw--uppercase sw--margin-left-4 sw--font-size-12">View
+													Shop</a>
+											</li>
+											<li class="sw--margin-bottom-4 sw--shop-owner sw--is-hidden">
+												<a href="/shop/settings" event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - Shop Settings"
+													class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">
+													<span
+														class="sw--font-size-22 sw-dms--color-grey-46 icon-shop-settings sw--margin-right-2"></span>Shop
+													Settings
+												</a>
+											</li>
+											<li class="sw--margin-bottom-4 sw--shop-owner sw--is-hidden">
+												<a href="/mysales" event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - Shop Sales"
+													class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">
+													<span
+														class="sw--font-size-22 sw-dms--color-grey-46 icon-sales sw--margin-right-2"></span>
+													Shop Sales
+												</a>
+											</li>
+											<li class="sw--margin-bottom-4">
+												<a href="/my-integrations" event-category="Nav"
+													event-action="Click - Desktop - My Shapeways - e-Commerce Integrations"
+													class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">
+													<span
+														class="sw--font-size-22 sw-dms--color-grey-46 icon-globe sw--margin-right-2"></span>
+													e-Commerce Integrations
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div
+									class="sw-dms-nav__user-menu-my-account-info sw--padding-left-4 sw--padding-top-5 sw-grid-flex__cell-3-7">
+									<ul class="sw--list-style-none sw--margin-0">
+										<li class="sw--padding-hor-2 sw--padding-bottom-2">
+											<a href="/myprofile" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Public Profile"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Public
+												Profile</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="/mylists" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Favorites and Lists"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Favorites
+												&
+												Lists</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="/settings/email" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Settings"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Settings</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="/forum/conversations" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Messages"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Messages
+											</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="/orders" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Orders"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Orders</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="https://support.shapeways.com/hc/en-us" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Help Center"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Help
+												Center</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="https://support.shapeways.com/hc/en-us/requests/new"
+												event-category="Navigation"
+												event-action="Click - Desktop - My Shapeways - Help Center"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Contact
+												Us</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="/forum" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Forum"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Forum</a>
+										</li>
+										<li class="sw--padding-2">
+											<a href="/logout" event-category="Nav"
+												event-action="Click - Desktop - My Shapeways - Log Out"
+												class="sw-dms-nav__link sw-grid-flex sw-grid-flex--align-center">Logout</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="user-menu__logged-out" th:if="${session.object == null}">
+							<a data-sw-login-link="login" href="/login" event-category="Nav"
+								event-action="Click - Desktop - Sign In"
+								class="sw-dms-nav__sign-in-button--desktop sw-dms--color-white sw-dms-button sw-dms-button--transparent sw-dms-button--small sw-dms-button--rectangle sw--capitalize"
+								data-coyote-locator="sign-in-button">
+								Sign In
+							</a>
+						</div>
+						<div class="user-menu__logged-out" th:if="${session.object != null}">
+							<a data-sw-login-link="login" href="/logout" event-category="Nav"
+								event-action="Click - Desktop - Sign In"
+								class="sw-dms-nav__sign-in-button--desktop sw-dms--color-white sw-dms-button sw-dms-button--transparent sw-dms-button--small sw-dms-button--rectangle sw--capitalize"
+								data-coyote-locator="sign-in-button">
+								Logout
+							</a>
+						</div>
+					</li>
+					<script>
+
+						function getCookie(name) {
+							let value = `; ${document.cookie}`;
+							let parts = value.split(`; ${name}=`);
+							if (parts.length === 2) return parts.pop().split(';').shift();
+						}
+
+
+						/**
+						 * if the user is logged in, then we want to hide the .user-menu__logged-out div
+						 * and show the .user-menu__logged-in div
+						 */
+						if (getCookie('uauth')) {
+							let loggedOutEls = document.getElementsByClassName('user-menu__logged-out');
+							let loggedInEls = document.getElementsByClassName('user-menu__logged-in');
+							for (let i = 0; i < loggedOutEls.length; i++) {
+								loggedOutEls[i].classList.add('sw--is-hidden');
+							}
+
+							for (let i = 0; i < loggedInEls.length; i++) {
+								loggedInEls[i].classList.remove('sw--is-hidden');
+							}
+						}
+
+						// when a user clicks the sw logo in the /marketplace, it should redirect them back to the /marketplace
+						function updateLinkHref(link) {
+							link.href = link.href.includes('/marketplace') ? '/marketplace' : '/';
+						}
+
+						let link = document.getElementById("logo-link");
+						updateLinkHref(link)
+
+					</script>
+
+
+					<li id="sw-cart-button"
+						class="sw-dms-nav__mobile-right-section sw--height-full sw-dms-nav__cart-menu-toggle sw--padding-left-6 sw--padding-right-3 sw-grid-flex sw-grid-flex--align-center"
+						data-sw-cart data-sw-cart-brand="dms">
+						<div class="sw--display-inline-block sw--position-relative">
+							<span data-sw-toggle=".sw-dms-nav__cart-menu-toggle"
+								data-sw-toggle-class="sw-dms-nav__cart-menu--open" data-sw-toggle-el-event="click"
+								data-sw-toggle-remove-on-outside-click="true"
+								data-sw-toggle-global-event-add="sw-dms-cart-open" data-sw-toggle-is-toggler="true"
+								data-coyote-locator="cart-menu-toggle"
+								class="sw-dms-nav__link  sw-dms-nav__link--light  icon-cart sw-top-nav__icon sw-top-nav-cart__icon sw--font-size-22 sw-dms-nav__cart-menu-anchor">
+							</span>
+							<div data-sw-cart-counter id="cartcount"
+								class="sw--position-absolute sw-notification-counter sw-notification-counter--red sw-notification-counter--white-text--important sw-notification-counter--cart sw--is-hidden">
+								0</div>
+						</div>
+						<div class="sw-dms-nav__cart-menu-static sw-dms-nav__cart-menu sw--border-grey-1 sw--font-size-14 sw-dms--box-shadow--big sw--border-radius-5"
+							data-coyote-locator="cart-menu">
+							<div data-sw-cart-list>
+								<div data-sw-cart-w-items
+									class="sw--is-hidden sw-top-nav-cart__modal-footer-static sw-top-nav-cart__modal-footer--v2 sw--border-radius-5 sw--text-center sw--clear-both sw-dms--bg-grey-96">
+									<a href="/cart"
+										class="sw--margin-left-4 sw--margin-right-4 sw-dms-button sw-dms-button--big-static sw--uppercase"
+										data-coyote-locator="cart-edit-button"> Edit Cart </a>
+									<a href="/checkout/confirm"
+										class="sw--margin-right-4 sw--margin-left-4 sw-dms-button sw-dms-button--big-static sw-dms-button--red sw--uppercase"
+										data-coyote-locator="cart-checkout-button"> Checkout </a>
+								</div>
+								<div data-sw-cart-no-items
+									class="sw-top-nav-cart__modal-header sw-top-nav-cart__modal-header--v2 sw--padding-left-4 sw--text-center sw--padding-right-4">
+									<div
+										class="sw-top-nav-cart__modal-header-title sw-top-nav-cart__modal-header-title--v2-static sw--padding-top-4 sw--padding-bottom-4">
+										You haven't added any 3D printed products yet.
+									</div>
+								</div>
+								<div data-sw-cart-no-items
+									class="sw--padding-vert-6 sw--border-radius-bottom-5 sw-top-nav-cart__modal-footer--no-items sw-dms--bg-grey-96">
+									<div
+										class="sw--position-left sw--position-right sw--margin-auto sw-grid-flex sw-grid-flex--wrap sw-grid-flex--justify-center">
+										<a href="/marketplace"
+											class="sw-dms-button sw-dms-button--red sw-dms-button--big-static sw-grid-flex__cell-1-1">Shop
+											The
+											Marketplace</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+			</li>
+
+		</ul>
+	</nav>
+</div>

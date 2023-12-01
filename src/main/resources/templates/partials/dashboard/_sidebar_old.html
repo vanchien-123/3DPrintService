@@ -1,0 +1,84 @@
+<!-- Spinner Start -->
+<div id="spinner"
+	class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+	<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+<!-- Spinner End -->
+
+<!-- Sidebar Start -->
+<div class="sidebar pe-4 pb-3">
+	<nav class="navbar bg-secondary navbar-dark">
+		<a th:href="@{/}" class="navbar-brand mx-4 mb-3">
+			<h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>G3Sem4</h3>
+		</a>
+		<div class="d-flex align-items-center ms-4 mb-4">
+			<div class="position-relative">
+				<img class="rounded-circle"
+					src="https://scontent.fsgn13-4.fna.fbcdn.net/v/t39.30808-6/248209746_284901260162532_2784902672761211506_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=1b51e3&_nc_ohc=ThXhKcSxvHkAX_xaS2H&_nc_ht=scontent.fsgn13-4.fna&oh=00_AfBBo9Tups1di8qypdl38l-dDl8Kb203YsNTaTixEFt4rA&oe=651ACA27"
+					alt="" style="width: 40px; height: 40px;">
+				<div
+					class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+				</div>
+			</div>
+			<div class="ms-3">
+				<h6 class="mb-0">g3sem4@gmail.com</h6>
+				<span>Admin</span>s
+			</div>
+		</div>
+		<div class="navbar-nav w-100">
+			<a th:href="@{/admin/products}" class="nav-item nav-link "><i
+					class="fa fa-tachometer-alt me-2"></i>Products</a>
+			<a th:href="@{/admin/inventory}" class="nav-item nav-link "><i
+					class="fa fa-tachometer-alt me-2"></i>Inventory</a>
+			<a th:href="@{/admin/inventory}" class="nav-item nav-link "><i
+					class="fa fa-tachometer-alt me-2"></i>Order</a>
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Categories</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/cats}" class="dropdown-item ">Cats</a>
+					<a th:href="@{/admin/subcats}" class="dropdown-item">SubCats</a>
+					<a th:href="@{/admin/prodgroups}" value="pgs" class="nav-item nav-link"><i
+							class="fa fa-th me-2"></i>Prodgroups</a>
+				</div>
+			</div>
+
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Materials</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/materials}" class="dropdown-item">Mats</a>
+					<a th:href="@{/admin/colors}" class="dropdown-item ">Colors</a>
+					<a th:href="@{/admin/manufacturers}" class="dropdown-item">Manufacturers</a>
+
+				</div>
+			</div>
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="fa fa-laptop me-2"></i>Technols</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a th:href="@{/admin/technologies}" class="dropdown-item">Technologies</a>
+					<a th:href="@{/admin/printers}" class="dropdown-item">Printers</a>
+
+
+				</div>
+			</div>
+			<div>
+				<a th:href="@{/admin/news}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>News</a>
+			</div>
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+						class="far fa-file-alt me-2"></i>Pages</a>
+				<div class="dropdown-menu bg-transparent border-0">
+					<a href="signin.html" class="dropdown-item">Sign In</a>
+					<a href="signup.html" class="dropdown-item">Sign Up</a>
+					<a href="404.html" class="dropdown-item">404 Error</a>
+					<a href="blank.html" class="dropdown-item">Blank Page</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>
+<!-- Sidebar End -->

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Delivery Detail</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Icon Font Stylesheet -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link th:href="@{/css/dashboard/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Template Stylesheet -->
+	<link th:href="@{/css/dashboard/style.css}" rel="stylesheet">
+
+	<link th:href="@{/css/dashboard/dataTable.css}" rel="stylesheet">
+
+	<link th:href="@{/css/dashboard/buttonDataTable.css}" rel="stylesheet">
+
+
+
+
+	<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+	<style>
+		#titlename {
+			font-size: calc(1.325rem + .9vw);
+			margin-top: 0;
+			margin-bottom: 0.5rem;
+			font-family: "Roboto", sans-serif;
+			font-weight: 700;
+			line-height: 1.2;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-fluid position-relative d-flex p-0">
+		<th:block th:include="/partials/dashboard/_sidebar"></th:block>
+
+		<!-- Content Start -->
+		<div class="content align-items-center justify-content-between">
+			<th:block th:include="/partials/dashboard/_navbar"></th:block>
+			<!-- Recent Sales Start -->
+
+			<div class="container-fluid pt-4 px-4">
+				<div class="bg-white  text-center rounded p-4">
+					<div class="d-flex align-items-center justify-content-between mb-4">
+						<a class="" th:href="@{/admin/deliveries}">Back to list</a>
+					</div>
+
+				</div>
+				<div class="bg-secondary text-center rounded p-4">
+					<div class="d-flex align-items-center justify-content-between mb-4">
+						<div class="table-responsive">
+							<h4 class="mb-0">DELIVERY DETAIL</h4><br />
+							<hr />
+							<table class="table text-start align-middle table-bordered table-hover mb-0">
+								<tr class="text-white">
+									<td scope="col">Delivery No.</td>
+									<td th:text="${deliveryid}"></td>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Order No.</td>
+									<td th:text="${orderid}"></td>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Ordered at</th>
+									<td th:text="${order_createdat}"></td>
+								<tr class="text-white">
+									<td scope="col">Delivered at</th>
+									<td th:text="${delivered_createdat}"></td>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Customer Name</td>
+									<div th:each="u : ${listUsers}">
+										<div th:if="${u.user_id == buyerid}">
+											<td scope="col" th:text="${u.name}+'| '+${u.usertype}+'( '+${buyerid}+') '">
+											</td>
+										</div>
+									</div>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Contact</td>
+									<div th:each="u : ${listUsers}">
+										<div th:if="${u.user_id == buyerid}">
+											<td scope="col" th:text="'Tel.: ' + ${u.tel}+'| Email: '+${u.email}"></td>
+										</div>
+									</div>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Address</td>
+									<div th:each="u : ${listUsers}">
+										<div th:if="${u.user_id == buyerid}">
+											<td scope="col" th:text="${u.address}"></td>
+										</div>
+									</div>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Total</td>
+									<td th:text="${total}"></td>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Status</td>
+									<td th:text="${order_status}"></td>
+								</tr>
+								<tr class="text-white">
+									<td scope="col">Notes</td>
+									<td th:text="${order_notes}"></td>
+								</tr>
+							</table>
+							<br />
+							<hr />
+
+							<table id="myTable" class="table text-start align-middle table-bordered table-hover mb-0">
+								<thead>
+									<tr class="text-white">
+										<th scope="col">No.</th>
+										<th scope="col">Delivery Item No.</th>
+										<th scope="col">Product Name</th>
+										<th scope="col">Notes</th>
+										<th scope="col">Stocking Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--<div th:text="${_orderid}"></div>-->
+									<div th:each=" di, iStat : ${listDeliveryitems}">
+										<!--<td th:text="${iStat.count}"></td>-->
+										<div th:if="${di.orderid == orderid}">
+
+											<td th:text="${di.deliveryitem_id}"></td>
+											<div th:each="p : ${listProducts}">
+												<div th:if="${p.product_id == productid}">
+													<td th:text="${p.product_name}"></td>
+												</div>
+											</div>
+											<td th:text="${di.deliveryitem_notes}"></td>
+											<td th:text="${di.inventoryitem_status}"></td>
+										</div>
+									</div>
+									<!--</div>-->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Recent Sales End -->
+	<th:block th:include="/partials/dashboard/_footer"></th:block>
+	</div>
+
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+	</div>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+	<!-- Template Javascript -->
+	<script th:src="@{/js/main.js}"></script>
+	<script type="text/javascript">
+
+
+		$(document).ready(function () {
+			$('#myTable').DataTable({
+				dom: 'Bfrtip',
+				renderer: {
+					"header": "jqueryui",
+					"pageButton": "bootstrap"
+				},
+				buttons: [
+					'copy', 'csv', 'excel', 'pdf', 'print'
+				]
+			});
+		});
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>G3Sem4 Dashboard Admin| Categories</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Icon Font Stylesheet -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link th:href="@{/css/dashboard/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Template Stylesheet -->
+	<link th:href="@{/css/dashboard/style.css}" rel="stylesheet">
+	
+	<link th:href="@{/css/dashboard/dataTable.css}" rel="stylesheet">
+	<link th:href="@{/css/dashboard/buttonDataTable.css}" rel="stylesheet">
+
+	<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+	<div class="container-fluid position-relative d-flex p-0">
+
+
+
+		<th:block th:include="/partials/dashboard/_sidebar"></th:block>
+
+		<!-- Content Start -->
+		<div class="content">
+
+			<th:block th:include="/partials/dashboard/_navbar"></th:block>
+
+
+			<!-- Recent Sales Start -->
+			<div class="container-fluid pt-4 px-4">
+				<div class="bg-secondary text-center rounded p-4">
+					<div class="d-flex align-items-center justify-content-between mb-4">
+						<h6 class="mb-0">List of Categories</h6>
+
+						<a class="" th:href="@{/admin/cats/insert}">Add New</a>
+					</div>
+					<div class="table-responsive">
+						<table id="myTable" class="table text-start align-middle table-bordered table-hover mb-0">
+							<thead>
+								<tr class="text-white">
+									<th scope="col">Id Cat</th>
+									<th scope="col">Name</th>
+									<th scope="col">Description</th>
+									<th scope="col">Active</th>
+									<th scope="col">Created at</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr th:each=" cat : ${listCats}">
+									<th th:text="${cat.id}"></th>
+									<td th:text="${cat.name}"></td>
+									<td>
+										<a th:href="@{'/admin/cats/viewdetail?id=' + ${cat.id}}">view detail</a>
+									</td>
+									<div th:switch="${cat.active}">
+										<td th:case="0">
+											<form action="/admin/cats/active" method="get">
+												<input type="hidden" name="idCat" id="idCat" th:value="${cat.id}" />
+												<button type="submit" class="btn">
+													<i class="fa-solid fa-toggle-on text-danger fs-2"></i>
+												</button>
+											</form>
+										</td>
+										<td th:case="1">
+											<form action="/admin/cats/inactive" method="get">
+												<input type="hidden" name="idCat" id="idCat" th:value="${cat.id}" />
+												<button type="submit" class="btn">
+													<i class="fa-solid fa-toggle-off text-danger fs-2"></i>
+												</button>
+											</form>
+										</td>
+									</div>
+									<td th:text="${cat.createdat}"></td>
+									<td class="text-center">
+										<form action="/admin/cats/edit" method="get">
+											<input type="hidden" name="idCat" id="idCat" th:value="${cat.id}" />
+											<button type="submit" class="btn"><i
+													class="fa-solid fa-pen-to-square"></i></button>
+										</form>
+										<form action="/admin/cats/delete" method="post">
+											<input type="hidden" name="idCat" id="idCat" th:value="${cat.id}" />
+											<button type="submit" class="btn"> <i
+													class="fa-solid fa-trash"></i></button>
+										</form>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- Recent Sales End -->
+
+
+
+			<th:block th:include="/partials/dashboard/_footer"></th:block>
+
+
+		</div>
+		<!-- Content End -->
+
+
+		<!-- Back to Top -->
+		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+	</div>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+	<!-- Template Javascript -->
+	<script th:src="@{/js/main.js}"></script>
+	<script type="text/javascript">
+
+
+		$(document).ready(function () {
+			$('#myTable').DataTable({
+				dom: 'Bfrtip',
+				renderer: {
+					"header": "jqueryui",
+					"pageButton": "bootstrap"
+				},
+				buttons: [
+					'copy', 'csv', 'excel', 'pdf', 'print'
+				]
+			});
+		});
+
+
+	</script>
+</body>
+
+</html>
